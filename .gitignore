@@ -1,0 +1,21 @@
+# Prerequisites
+*.d
+*.o
+*.obj
+*.exe
+*.dll
+
+# Editor/IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Build
+build/
+bin/
+*.out
+library_app

@@ -1,0 +1,121 @@
+Build a **C++ Library Management System** using **Object-Oriented Programming principles**.
+
+Requirements:
+
+* Classes: `Book`, `User`, `Library`
+* Use:
+
+  * Encapsulation
+  * Inheritance (optional)
+  * Polymorphism (optional)
+* Features:
+
+  * Book management
+  * Member management
+  * Issue and return tracking
+  * File handling to save and load data
+* Menu-driven console interface
+* Clean modular design with `.h` and `.cpp` files
+* Well-documented code suitable for academic submission and resume showcase
+
+
+
+Project Overview
+This project is a C++ console application demonstrating core Object-Oriented Programming (OOP) principles:
+
+Encapsulation: Used in 
+Book
+ class to protect data.
+Inheritance: 
+Student
+ and 
+Librarian
+ inherit from 
+User
+.
+Polymorphism: User* pointers used to manage different user types dynamically.
+Abstraction: 
+User
+ is an abstract base class.
+Directory Structure
+src/: contains 
+.cpp
+ source files.
+include/: contains 
+.h
+ header files.
+data/: contains books.txt and users.txt for data persistence.
+How to Compile
+Open a terminal in the project root (.../Library management system) and run:
+
+g++ src/main.cpp src/Book.cpp src/User.cpp src/Student.cpp src/Librarian.cpp src/Library.cpp -I include -o library_app
+How to Run
+After compilation, execute the application:
+
+Windows:
+
+library_app.exe
+Features
+Add Book: Enter details (ID, Title, Author, ISBN).
+Register User: Create Student or Librarian accounts.
+Issue/Return: Manage book circulation.
+Save & Exit: All data is saved to data/ directory and loaded on next restart.
+File Formats
+books.txt: ID|Title|Author|ISBN|Availability(1/0)
+users.txt: Type|ID|Name|...
+
+
+Library Management System (C++) - Implementation Plan
+Goal Description
+Build a modular, menu-driven Library Management System in C++ demonstrating OOP principles: Encapsulation, Inheritance, Polymorphism, and File Handling.
+
+Proposed Changes
+Core Architecture
+Directory Structure:
+
+src/: .cpp files
+include/: .h files
+data/: .txt files for storage
+Class Design
+Book
+
+Encapsulation: Private members (id, title, author, isIssued). Public getters/setters.
+Features: Store book details. Serizalization helper.
+User (Abstract Base Class)
+
+Abstraction/Polymorphism: Virtual destructor, pure virtual displayRole().
+Attributes: id, name.
+Methods: Getters for ID/Name, internal serialization helpers.
+Student (Inherits User)
+
+Attributes: List of borrowed book IDs (optional), fine amount.
+Methods: Override displayRole().
+Librarian (Inherits User)
+
+Roles: Admin access (add books, users).
+Methods: Override displayRole().
+Library (Controller)
+
+Composition: Manages vectors of Book* and User*.
+File Handling:
+saveData(): Writes vectors to books.txt, users.txt.
+loadData(): Restores state on startup.
+Logic:
+issueBook(int userId, int bookId)
+returnBook(int userId, int bookId)
+addBook(...), registerUser(...)
+main.cpp
+
+Setup menu loop.
+Instantiate Library.
+Handle user input.
+File Formats
+books.txt: ID|Title|Author|IsIssued
+users.txt: Type|ID|Name (Type: S=Student, L=Librarian)
+Verification Plan
+Automated Tests
+None planned (Console app).
+Manual Verification
+Persistence Test: Add a book, exit, restart, check if book exists.
+Polymorphism Test: List all users, verify correct roles are printed.
+Encapsulation Test: Verify book status can only be changed via methods, not direct access
